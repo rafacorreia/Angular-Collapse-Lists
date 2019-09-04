@@ -1,3 +1,3 @@
-# angular-aja66b
+# angular-drag-collapse-list
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-aja66b)
+[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-drag-collapse-list)
