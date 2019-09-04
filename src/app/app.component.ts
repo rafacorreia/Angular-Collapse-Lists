@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { smoothHeight } from './animations';
+import { SortablejsOptions } from 'ngx-sortablejs';
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ],
+  styleUrls: ['./app.component.css'],
   animations: [smoothHeight]
 })
-export class AppComponent  {
+export class AppComponent implements AfterViewInit{
   name = 'Angular';
+  sortableInstance;
   content = false;
   lista = [
     {
@@ -47,7 +49,20 @@ export class AppComponent  {
         }
       ]
     }
-  ]
+  ];
+  options = {
+    component: this,
+    sort: true,
+    scroll: true,
+    // Element dragging started
+	onStart: function (/**Event*/evt) {
+		this.options.component.collapsarAll();  // element index within parent
+	},
+  };
+
+  ngAfterViewInit() {
+    console.log(this.sortableInstance);
+  }
 
   expandir(pai) {
     pai.collapsado = !pai.collapsado;

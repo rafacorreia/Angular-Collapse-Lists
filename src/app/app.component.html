@@ -1,7 +1,7 @@
 <div (click)="expandirAll()">Expandir Tudo</div>
 <div (click)="collapsarAll()">Collapsar Tudo</div>
 
-<ul style="background: yellow">
+<ul style="background: yellow" [sortablejs]="lista" [sortablejsOptions]="options" [runInsideAngular]="true">
   <li (click)="expandir(pai)" *ngFor="let pai of lista; let i = index">
     {{ pai.paiNome }}
     <ul [smoothHeight]="!pai.collapsado">
