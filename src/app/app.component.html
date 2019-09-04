@@ -1,0 +1,15 @@
+<div (click)="expandirAll()">Expandir Tudo</div>
+<div (click)="collapsarAll()">Collapsar Tudo</div>
+
+<ul style="background: yellow">
+  <li (click)="expandir(pai)" *ngFor="let pai of lista; let i = index">
+    {{ pai.paiNome }}
+    <ul [smoothHeight]="!pai.collapsado">
+      <ng-container *ngIf="!pai.collapsado">
+      <li *ngFor="let filho of pai.filhos">
+        {{ filho.filhoNome }}
+      </li>
+      </ng-container>
+    </ul>
+  </li>
+</ul>
