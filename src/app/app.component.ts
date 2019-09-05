@@ -55,12 +55,11 @@ export class AppComponent implements AfterViewInit {
     sort: true,
     scroll: true,
     handle: '.handler-pai',
-    direction: 'vertical',
+    forceFallback: true,  // ignore the HTML5 DnD behaviour and force the fallback to kick in
     fallbackOnBody: true,
-    forceFallback: true,
     fallbackClass: "dragged-item",
     // Element dragging started
-    onStart: function () {
+    onChoose: function () {
       this.options.component.collapsarAll();  // element index within parent
     },
   };
@@ -68,7 +67,7 @@ export class AppComponent implements AfterViewInit {
     component: this,
     sort: true,
     scroll: true,
-    handle: '.handler-fio',
+    handle: '.handler-fio'
   };
   itensCollapsados = [];
 

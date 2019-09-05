@@ -4,7 +4,8 @@ html {
 
 ul.lista-sortable li i {
     margin-right: 10px;
-    cursor: pointer;
+    cursor: -webkit-grab;
+;
 }
 
 ul.lista-sortable > li {
@@ -33,21 +34,32 @@ ul.sublista-sortable > li {
   border-bottom: 1px solid #dedede;
   align-items: center;
   font-size: 13px;
+  transition: all .3s;
 }
 
 .dragged-item {
   opacity: 1 !important;
   list-style: none;
   background: #ebebeb;
-  border-top: 1px solid #dedede;
+  /* border-radius: 5px; */
+  border: 1px solid #005A9C;
   font-size: 14px;
-  border-bottom: 1px solid #dedede;
   font-family: sans-serif;
-  display: block;
   height: 45px !important;
   overflow: hidden;
+  cursor: -webkit-grab;
+  width: auto;
+  display: inline-block;
 }
+
+  .dragged-item i {
+    color: #005A9C;
+  }
 
 .dragged-item ul {
   display: none !important;
+}
+
+.sortable-chosen {
+  background: #eee !important;
 }
