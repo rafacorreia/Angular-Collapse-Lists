@@ -55,8 +55,9 @@ export class AppComponent implements AfterViewInit {
     sort: true,
     scroll: true,
     handle: '.handler-pai',
+    direction: 'vertical',
     fallbackOnBody: true,
-    forceFallback: true, 
+    forceFallback: true,
     fallbackClass: "dragged-item",
     // Element dragging started
     onStart: function () {

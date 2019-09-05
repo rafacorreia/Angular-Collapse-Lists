@@ -2,16 +2,38 @@
 <div (click)="collapsarAll()">Collapsar Tudo</div>
 
 <ul class="lista-sortable" [sortablejs]="lista" [sortablejsOptions]="options" [runInsideAngular]="true">
-	<li (click)="expandir(i)" [class.fechado]="this.itensCollapsados.indexOf(i) < 0" *ngFor="let pai of lista; let i = index">
-		<div style="display: flex;align-items: center; padding: 10px">
+	<li [class.fechado]="this.itensCollapsados.indexOf(i) < 0" *ngFor="let pai of lista; let i = index">
+		<div style="display: flex;align-items: center; padding: 10px" (click)="expandir(i)">
 			<i class="material-icons handler-pai">apps</i> <span>{{ pai.paiNome }}</span>
     </div>
-		<ul [smoothHeight]="this.itensCollapsados.indexOf(i) < 0" class="sublista-sortable" [sortablejs]="pai.filhos" [sortablejsOptions]="options2" [runInsideAngular]="true">
+		<!-- <ul [smoothHeight]="this.itensCollapsados.indexOf(i) < 0" class="sublista-sortable" [sortablejs]="pai.filhos" [sortablejsOptions]="options2" [runInsideAngular]="true">
 			<ng-container *ngIf="this.itensCollapsados.indexOf(i) >= 0">
 				<li *ngFor="let filho of pai.filhos; let y = index">
 					 <i class="material-icons handler-fio">apps</i> {{ filho.filhoNome }}
 				</li>
 			</ng-container>
-		</ul>
+		</ul> -->
+        <table [smoothHeight]="this.itensCollapsados.indexOf(i) < 0" class="sublista-sortable" [sortablejs]="pai.filhos" [sortablejsOptions]="options2" [runInsideAngular]="true">
+      <ng-container *ngIf="this.itensCollapsados.indexOf(i) >= 0">
+          <thead>
+            <tr>
+            <th>
+
+            </th>
+            <th>
+              Item
+            </th>
+            </tr>
+          </thead>
+            <tr *ngFor="let filho of pai.filhos; let y = index">
+              <td>
+                <i class="material-icons handler-fio">apps</i>
+              </td>
+              <td>
+                {{ filho.filhoNome }}
+              </td>
+            </tr>
+      </ng-container>
+        </table>
 	</li>
 </ul>
