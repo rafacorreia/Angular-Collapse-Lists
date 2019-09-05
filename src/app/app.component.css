@@ -1,3 +1,53 @@
-p {
-  font-family: Lato;
+html {
+  font-family: sans-serif;
+}
+
+ul.lista-sortable li i {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+ul.lista-sortable > li {
+    background: #f9f9f9;
+    font-size: 14px;
+    border-bottom: 1px solid #dedede;
+}
+ul.lista-sortable {
+    border-top: 1px solid #dedede;
+    list-style: none;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+ul.sublista-sortable {
+    list-style: none;
+    padding: 0;
+    background: #efefef;
+}
+
+ul.sublista-sortable > li {
+  background: #eee;
+  padding: 10px 30px;
+  display: flex;
+  border-top: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
+  align-items: center;
+  font-size: 13px;
+}
+
+.dragged-item {
+  opacity: 1 !important;
+  list-style: none;
+  background: #ebebeb;
+  border-top: 1px solid #dedede;
+  font-size: 14px;
+  border-bottom: 1px solid #dedede;
+  font-family: sans-serif;
+  display: block;
+  height: 45px !important;
+  overflow: hidden;
+}
+
+.dragged-item ul {
+  display: none !important;
 }
