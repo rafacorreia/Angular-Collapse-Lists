@@ -1,15 +1,17 @@
 <div (click)="expandirAll()">Expandir Tudo</div>
 <div (click)="collapsarAll()">Collapsar Tudo</div>
 
-<ul style="background: yellow" [sortablejs]="lista" [sortablejsOptions]="options" [runInsideAngular]="true">
-  <li (click)="expandir(pai)" *ngFor="let pai of lista; let i = index">
-    {{ pai.paiNome }}
-    <ul [smoothHeight]="!pai.collapsado">
-      <ng-container *ngIf="!pai.collapsado">
-      <li *ngFor="let filho of pai.filhos">
-        {{ filho.filhoNome }}
-      </li>
-      </ng-container>
-    </ul>
-  </li>
+<ul class="lista-sortable" [sortablejs]="lista" [sortablejsOptions]="options" [runInsideAngular]="true">
+	<li (click)="expandir(i)" [class.fechado]="this.itensCollapsados.indexOf(i) < 0" *ngFor="let pai of lista; let i = index">
+		<div style="display: flex;align-items: center; padding: 10px">
+			<i class="material-icons handler-pai">apps</i> <span>{{ pai.paiNome }}</span>
+    </div>
+		<ul [smoothHeight]="this.itensCollapsados.indexOf(i) < 0" class="sublista-sortable" [sortablejs]="pai.filhos" [sortablejsOptions]="options2" [runInsideAngular]="true">
+			<ng-container *ngIf="this.itensCollapsados.indexOf(i) >= 0">
+				<li *ngFor="let filho of pai.filhos; let y = index">
+					 <i class="material-icons handler-fio">apps</i> {{ filho.filhoNome }}
+				</li>
+			</ng-container>
+		</ul>
+	</li>
 </ul>

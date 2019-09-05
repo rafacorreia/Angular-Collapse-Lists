@@ -8,7 +8,7 @@ import { SortablejsOptions } from 'ngx-sortablejs';
   styleUrls: ['./app.component.css'],
   animations: [smoothHeight]
 })
-export class AppComponent implements AfterViewInit{
+export class AppComponent implements AfterViewInit {
   name = 'Angular';
   sortableInstance;
   content = false;
@@ -54,29 +54,44 @@ export class AppComponent implements AfterViewInit{
     component: this,
     sort: true,
     scroll: true,
+    handle: '.handler-pai',
+    fallbackOnBody: true,
+    forceFallback: true, 
+    fallbackClass: "dragged-item",
     // Element dragging started
-	onStart: function (/**Event*/evt) {
-		this.options.component.collapsarAll();  // element index within parent
-	},
+    onStart: function () {
+      this.options.component.collapsarAll();  // element index within parent
+    },
   };
+  options2 = {
+    component: this,
+    sort: true,
+    scroll: true,
+    handle: '.handler-fio',
+  };
+  itensCollapsados = [];
 
   ngAfterViewInit() {
     console.log(this.sortableInstance);
   }
 
   expandir(pai) {
-    pai.collapsado = !pai.collapsado;
+    const itemExistente = this.itensCollapsados.indexOf(pai);
+    if (itemExistente >= 0) {
+      this.itensCollapsados.splice(itemExistente, 1);
+    } else {
+      this.itensCollapsados.push(pai);
+    }
   }
 
   expandirAll() {
-    this.lista.forEach(el => {
-      el.collapsado = false;
-    })
+      this.itensCollapsados = [];
+      for (let i = 0; i <= this.lista.length; i++) {
+        this.itensCollapsados.push(i);
+      }
   }
 
   collapsarAll() {
-    this.lista.forEach(el => {
-      el.collapsado = true;
-    })
+    this.itensCollapsados = [];
   }
 }
