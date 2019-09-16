@@ -94,4 +94,8 @@ export class AppComponent implements AfterViewInit {
   collapsarAll() {
     this.itensCollapsados = [];
   }
+  
+  mostrar() {
+    console.log(this.lista);
+  }
 }
