@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SmoothHeightAnimDirective } from './smoothHeight.directive';
 import { AppComponent } from './app.component';
-import { SortablejsModule } from 'ngx-sortablejs';
+import { SortablejsModule } from 'angular-sortablejs';
 import {DndModule} from 'ng2-dnd';
 
 @NgModule({
